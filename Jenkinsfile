@@ -29,7 +29,7 @@ spec:
     stage('Build Docker image') {
       git 'https://github.com/jenkinsci/docker-jnlp-slave.git'
       container('docker') {
-        sh "docker build -t ${image} ."
+        sh "docker build -t ${image} . && docker push docker-registry-default.127.0.0.1.nip.io:80/pushed/${image}:latest"
       }
     }
   }
